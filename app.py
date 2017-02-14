@@ -28,11 +28,13 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "shipping.cost":
+    if req.get("result").get("action") != "hardware-estimator":
         return {}
     result = req.get("result")
     parameters = result.get("parameters")
-    zone = parameters.get("shipping-zone")
+    dealsize = parameters.get("dealsize")
+    batchsize = parameters.get("batchsize")
+    calculationtype = parameters.get("calculationtype")
 
     cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
 
