@@ -36,9 +36,12 @@ def makeWebhookResult(req):
     batchsize = parameters.get("BatchSize")
     calculationtype = parameters.get("CalculationType")
 
-    cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
+    stddealsize = int(dealsize) / 100000
+    stdPVLookup = {'FRTB-SA': 10, 'HS VaR': 50, 'Monte Carlo VaR': 500, 'FRTB HS-IMA': 1000, 'PFE': 5000, 'PFE Stress Tests': 500000, 'FRTB-CVA': 2500000}
+    
+    dealPV = stddealsize * int(stdPVLookup[calculationtype])
 
-    speech = "This is a response back from the webhook with the parameters. Deal size: %s, Batch size: %s, Calculation Type: %s." % (dealsize,batchsize,calculationtype)
+    speech = "This is a response back from the webhook with the parameters. Estimated Deal PV: %s, Batch size: %s, Calculation Type: %s." % (dealPV,batchsize,calculationtype)
 
     print("Response:")
     print(speech)
