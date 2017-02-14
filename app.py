@@ -37,14 +37,27 @@ def makeWebhookResult(req):
     calculationtype = parameters.get("CalculationType")
 
     stddealsize = int(dealsize) / 100000.0
+    
+    #Assumes the following for PV estimations
+    #                           Trades	Scenarios	Horizons	Calcs
+    #Market Risk Sensitivities	100000	20	        1	        1
+    #HSVaR	                    100000	500	        1	        1
+    #Monte Carlo VaR	        100000	5000	    1	        1
+    #MC VaR Factor Groups	    100000	5000	    1	        10
+    #Additional VaR Horizons	100000	5000	    5	        10
+    #Potential Future Exposure	100000	5000	    100	        1
+    #PFE Stress Tests	        100000	5000	    100	        10
+    #CVA Sensitivities	        100000	5000	    100	        50
+
     stdPVLookup = {'FRTB-SA': 10, 'HS VaR': 50, 'Monte Carlo VaR': 500, 'FRTB HS-IMA': 1000, 'PFE': 5000, 'PFE Stress Tests': 500000, 'FRTB-CVA': 2500000}
     
     dealPV = stddealsize * stdPVLookup[calculationtype]
     
-    #Naked cores is 30 million PVs for 2x8 core
+    #Naked cores is 30 million PVs for 2x8 core and 10 adhoc runs i.e each run to complete in 2.4 hours
+    #how to scale?
     numofCores = dealPV / 30
     
-    speech = "This is a response back from the webhook with the parameters. Estimated PV Calculations (in million): %s, Num of Cores: %s, Calculation Type: %s." % (str(dealPV),str(numofCores),calculationtype)
+    speech = "Estimated PV Calculations (in million): %s, Num of Cores: %s, Calculation Type: %s." % (str(dealPV),str(numofCores),calculationtype)
 
     print("Response:")
     print(speech)
