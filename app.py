@@ -28,8 +28,8 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    if req.get("result").get("action") != "hardware-estimator":
-        return {}
+#    if req.get("result").get("action") != "hardware-estimator":
+#        return {}
     result = req.get("result")
     parameters = result.get("parameters")
     dealsize = parameters.get("dealsize")
