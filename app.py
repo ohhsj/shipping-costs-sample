@@ -38,9 +38,14 @@ def makeWebhookResult(req):
 
     stddealsize = int(dealsize) / 100000
     stdPVLookup = {'FRTB-SA': 10, 'HS VaR': 50, 'Monte Carlo VaR': 500, 'FRTB HS-IMA': 1000, 'PFE': 5000, 'PFE Stress Tests': 500000, 'FRTB-CVA': 2500000}
+
+    print(str(stdPVLookup[calculationtype]))
+    print(str(stddealsize))
     
     dealPV = stddealsize * stdPVLookup[calculationtype]
 
+    print(str(dealPV))
+    
     speech = "This is a response back from the webhook with the parameters. Estimated Deal PV: %s, Batch size: %s, Calculation Type: %s." % (str(dealPV),batchsize,calculationtype)
 
     print("Response:")
