@@ -41,7 +41,7 @@ def makeWebhookResult(req):
     
     dealPV = stddealsize * int(stdPVLookup[calculationtype])
 
-    speech = "This is a response back from the webhook with the parameters. Estimated Deal PV: %s, Batch size: %s, Calculation Type: %s." % (dealPV,batchsize,calculationtype)
+    speech = "This is a response back from the webhook with the parameters. Estimated Deal PV: %s, Batch size: %s, Calculation Type: %s." % (str(dealPV),batchsize,calculationtype)
 
     print("Response:")
     print(speech)
