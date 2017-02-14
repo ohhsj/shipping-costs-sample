@@ -36,7 +36,7 @@ def makeWebhookResult(req):
     batchsize = parameters.get("BatchSize")
     calculationtype = parameters.get("CalculationType")
 
-    stddealsize = int(dealsize) / 100000
+    stddealsize = int(dealsize) / 100000.0
     stdPVLookup = {'FRTB-SA': 10, 'HS VaR': 50, 'Monte Carlo VaR': 500, 'FRTB HS-IMA': 1000, 'PFE': 5000, 'PFE Stress Tests': 500000, 'FRTB-CVA': 2500000}
 
     print(str(stdPVLookup[calculationtype]))
