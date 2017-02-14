@@ -38,7 +38,7 @@ def makeWebhookResult(req):
 
     cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
 
-    speech = "This is a test response back to the webhook"
+    speech = "This is a response back from the webhook with the parameters. Deal size: %s, Batch size: %s, Calculation Type: %s." % (dealsize,batchsize,calculationtype)
 
     print("Response:")
     print(speech)
