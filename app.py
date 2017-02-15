@@ -29,7 +29,11 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    herokuConfig = urllib.request.urlopen("https://api.heroku.com/apps/serene-plains-17463/config-vars").read()
+    url = 'https://api.heroku.com/apps/serene-plains-17463/config-vars'
+    req = urllib.request(url)
+    req.add_header('Accept': 'application/vnd.heroku+json; version=3')
+    req.add_header('Authorization': 'Bearer eb027009-93dd-41cf-8f6b-006956b4790d')
+    herokuConfig = urllib2.urlopen(req).read()
     
     api_key = None
     if request.headers.get('api-key'):
