@@ -35,10 +35,8 @@ def makeWebhookResult(req):
     herokuConfig = urllib2.urlopen(req2).read()
     
     api_key = None
-    if req.headers.get('api-key'):
-        api_key = req.headers['api-key']
-    elif req.args.get('api-key'):
-        api_key = req.args['api-key']
+    if 'api-key' in req:
+        api_key = req['api-key']
     if api_key != herokuConfig['API_KEY']:
         return {
                     "speech": speech,
