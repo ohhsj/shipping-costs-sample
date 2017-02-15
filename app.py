@@ -14,15 +14,15 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-#    url = 'https://api.heroku.com/apps/serene-plains-17463/config-vars'
-#    req2 = urllib2.Request(url)
-#    req2.add_header('Accept', 'application/vnd.heroku+json; version=3')
-#    req2.add_header('Authorization', 'Bearer eb027009-93dd-41cf-8f6b-006956b4790d')
-#    herokuConfig = urllib2.urlopen(req2).read()
-    
-#    api_key = None
-#    if 'api-key' in request.headers
-#        api_key = request.headers['api-key']
+    url = 'https://api.heroku.com/apps/serene-plains-17463/config-vars'
+    req2 = urllib2.Request(url)
+    req2.add_header('Accept', 'application/vnd.heroku+json; version=3')
+    req2.add_header('Authorization', 'Bearer eb027009-93dd-41cf-8f6b-006956b4790d')
+    herokuConfig = urllib2.urlopen(req2).read()
+
+    req = request.get_json(silent=True, force=True)
+
+    api_key = req.get("headers").get("api-key")
 #    if api_key != herokuConfig['API_KEY']:
 #        res = {
 #                   "speech": speech,
@@ -31,8 +31,6 @@ def webhook():
 #                    # "contextOut": [],
 #                    "source": "apiai-onlinestore-shipping"
 #                }
-    
-    req = request.get_json(silent=True, force=True)
 
     print("Request:")
     print(json.dumps(req, indent=4))
