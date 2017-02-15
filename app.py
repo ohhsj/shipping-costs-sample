@@ -24,7 +24,7 @@ def webhook():
 
     api_key = request.headers["api-key"]
     if api_key != herokuConfig['API_KEY']:
-        return make_response({"displayText": "Here it is"});
+        return make_response({"displayText": "Here it is"})
 
     print("Request:")
     print(json.dumps(req, indent=4))
