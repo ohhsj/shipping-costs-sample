@@ -23,14 +23,8 @@ def webhook():
     req = request.get_json(silent=True, force=True)
 
     api_key = request.headers["api-key"]
-#    if api_key != herokuConfig['API_KEY']:
-#        res = {
-#                   "speech": speech,
-#                    "displayText": 'Invalid API key',
-#                    #"data": {},
-#                    # "contextOut": [],
-#                    "source": "apiai-onlinestore-shipping"
-#                }
+    if api_key != herokuConfig['API_KEY']:
+        return make_response({"displayText": "Here it is"});
 
     print("Request:")
     print(json.dumps(req, indent=4))
