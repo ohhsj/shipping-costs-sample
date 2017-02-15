@@ -22,7 +22,7 @@ def webhook():
 
     req = request.get_json(silent=True, force=True)
 
-    api_key = req.get("headers").get("api-key")
+    api_key = request.get("headers").get("api-key")
 #    if api_key != herokuConfig['API_KEY']:
 #        res = {
 #                   "speech": speech,
