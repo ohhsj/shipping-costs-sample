@@ -18,10 +18,10 @@ def webhook():
     req2 = urllib2.Request(url)
     req2.add_header('Accept', 'application/vnd.heroku+json; version=3')
     req2.add_header('Authorization', 'Bearer eb027009-93dd-41cf-8f6b-006956b4790d')
-    herokuConfig = json.load(urllib2.urlopen(req2).read())
+    herokuConfig = json.load(urllib2.urlopen(req2))
     
     print("Config-Var:")
-    print(herokuConfig)
+    print(herokuConfig['API_KEY'])
     
     req = request.get_json(silent=True, force=True)
 
