@@ -97,7 +97,7 @@ def makeWebhookResult(req):
         "speech": speech,
         "displayText": speech,
         #"data": {},
-        "contextOut": [{"name":"estimator", "lifespan":5, "parameters": json.dumps(respParam) }] ,
+        "contextOut": [{"name":"estimator", "lifespan":5, "parameters": respParam }] ,
         "source": "aa-hw-estimator-engine"
     }
 
