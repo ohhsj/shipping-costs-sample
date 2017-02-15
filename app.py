@@ -3,7 +3,7 @@ import math
 import urllib
 import json
 import os
-import urllib.request
+import urllib2
 
 from flask import Flask
 from flask import request
@@ -30,7 +30,7 @@ def webhook():
 
 def makeWebhookResult(req):
     url = 'https://api.heroku.com/apps/serene-plains-17463/config-vars'
-    req = urllib.request(url)
+    req = urllib2.Request(url)
     req.add_header('Accept': 'application/vnd.heroku+json; version=3')
     req.add_header('Authorization': 'Bearer eb027009-93dd-41cf-8f6b-006956b4790d')
     herokuConfig = urllib2.urlopen(req).read()
