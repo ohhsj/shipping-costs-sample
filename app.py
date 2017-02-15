@@ -49,15 +49,19 @@ def makeWebhookResult(req):
     #PFE Stress Tests	        100000	5000	    100	        10
     #CVA Sensitivities	        100000	5000	    100	        50
 
+    #in millions
     stdPVLookup = {'FRTB-SA': 10, 'HS VaR': 50, 'Monte Carlo VaR': 500, 'FRTB HS-IMA': 1000, 'PFE': 5000, 'PFE Stress Tests': 500000, 'FRTB-CVA': 2500000}
     
     dealPV = stddealsize * stdPVLookup[calculationtype]
     
-    #Naked cores is 30 million PVs for 2x8 core and 10 adhoc runs i.e each run to complete in 2.4 hours
-    #how to scale?
+    #Naked cores is 30 million PVs for 2x8 core and 10 adhoc runs i.e each run to complete in 2 hours
+    #Looking at around 250 valuations per core per second
     numofCores = dealPV / 30
     
-    speech = "Estimated PV Calculations (in million): %s, Num of Cores: %s, Calculation Type: %s." % (str(dealPV),str(numofCores),calculationtype)
+    #RAM size
+    RAM = dealPV / 30 * 32
+    
+    speech = "Estimated PV Calculations (in million): %s, Num of Cores: 2 x %s, RAM: %s, Calculation Type: %s." % (str(dealPV),str(numofCores),str(RAM),calculationtype)
 
     print("Response:")
     print(speech)
