@@ -19,8 +19,6 @@ def webhook():
 
     print("Request:")
     print(json.dumps(req, indent=4))
-
-    herokuConfig = urllib.request.urlopen("https://api.heroku.com/apps/serene-plains-17463/config-vars").read()
     
     res = makeWebhookResult(req)
 
@@ -31,8 +29,16 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-#    if req.get("result").get("action") != "hardware-estimator":
-#        return {}
+    herokuConfig = urllib.request.urlopen("https://api.heroku.com/apps/serene-plains-17463/config-vars").read()
+    
+    api_key = None
+    if request.headers.get('api-key'):
+        api_key = request.headers['api-key']
+    elif request.args.get('api-key'):
+        api_key = request.args['api-key']
+    if api_key != herokuConfig['API_KEY']:
+        return Response('Invalid API key'), 401
+    
     result = req.get("result")
     parameters = result.get("parameters")
     dealsize = parameters.get("DealSize")
