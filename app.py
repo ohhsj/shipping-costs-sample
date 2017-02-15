@@ -64,7 +64,7 @@ def makeWebhookResult(req):
     dealPV = stddealsize * stdPVLookup[calculationtype]
     
     #Naked cores is 60 million PVs for 2x8 core and 10 adhoc runs i.e each run to complete in 2 hours
-    #Looking at around 250 valuations per core per second
+    #Looking at around 500 valuations per core per second
     numofCores = math.ceil(dealPV / 60) * 8
     
     #RAM size
