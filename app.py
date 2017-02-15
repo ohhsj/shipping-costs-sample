@@ -91,8 +91,10 @@ def makeWebhookResult(req):
         batchScale = 0.25
     elif batchsize >= 5:
         batchScale = 0.5
-    else batchsize >= 10:
-        batchScale = 1
+    elif batchsize >= 10:
+        batchScale = 1    
+    else:
+        batchScale = 0
         
     numofCores = math.ceil(dealPV / 60) * 8 * batchScale
     
