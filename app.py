@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
-    url = 'https://api.heroku.com/apps/serene-plains-17463/config-vars'
+    url = 'https://api.heroku.com/apps/aa-hw-estimator-engine/config-vars'
     req2 = urllib2.Request(url)
     req2.add_header('Accept', 'application/vnd.heroku+json; version=3')
     req2.add_header('Authorization', 'Bearer eb027009-93dd-41cf-8f6b-006956b4790d')
