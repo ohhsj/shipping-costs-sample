@@ -47,11 +47,11 @@ def webhook():
 def makeWebhookResult(req):
     result = req.get("result")
     parameters = result.get("parameters")
-    dealsize = parameters.get("DealSize")
-    batchsize = parameters.get("BatchSize")
+    dealsize = int(parameters.get("DealSize"))
+    batchsize = int(parameters.get("BatchSize"))
     calculationtype = parameters.get("CalculationType")
 
-    stddealsize = int(dealsize) / 100000.0
+    stddealsize = dealsize / 100000.0
     
     #Assumes the following for PV estimations
     #                           Trades	Scenarios	Horizons	Calcs   Total
@@ -78,12 +78,26 @@ def makeWebhookResult(req):
     
     dealPV = stddealsize * stdPVLookup[calculationtype]
     
-    #Naked cores is 60 million PVs for 2x8 core and 10 adhoc runs i.e each run to complete in 2 hours
+    #Naked cores is 60 million PVs for 2x8 core and 10 adhoc runs i.e each run to complete in under 30mins
     #Looking at around 500 valuations per core per second
-    numofCores = math.ceil(dealPV / 60) * 8
+    #if the numnber of runs is just 1, then we can make use of 4 hours
+    #if the number of runs is more than 1 but less than 5, then we can make use of 2 hours
+    #if the number of runs is 5 or more but less than 10, then we can make use of 1 hour
+    #if the number of runs is 10 or more then we need to complete in 30mins
+    
+    if batchsize == 1:
+        batchScale = 0.1
+    elif batchsize > 1:
+        batchScale = 0.25
+    elif batchsize >= 5:
+        batchScale = 0.5
+    else batchsize >= 10:
+        batchScale = 1
+        
+    numofCores = math.ceil(dealPV / 60) * 8 * batchScale
     
     #RAM size
-    RAM = math.ceil(dealPV / 60) * 32
+    RAM = math.ceil(dealPV / 60) * 16 * batchScale
     
     speech = "Estimated PV Calculations (in million): %s, Num of Cores: 2 x %s, RAM: %s, Calculation Type: %s." % (str(dealPV),str(numofCores),str(RAM),calculationtype)
 
