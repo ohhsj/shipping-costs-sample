@@ -21,7 +21,7 @@ def webhook():
     herokuConfig = urllib2.urlopen(req2).read()
     
     print("Config-Var:")
-    print(json.dumps(herokuConfig,indent=4))
+    print(herokuConfig)
     
     req = request.get_json(silent=True, force=True)
 
