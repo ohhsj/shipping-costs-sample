@@ -30,8 +30,8 @@ def webhook():
     print("api-key:")
     print(api_key)
     
-#    if api_key != herokuConfig['API_KEY']:
-#        return make_response({"displayText": "Here it is"})
+    if api_key != herokuConfig['API_KEY']:
+        return make_response({"displayText": "Authorization error"})
 
     print("Request:")
     print(json.dumps(req, indent=4))
