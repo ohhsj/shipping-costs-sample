@@ -20,17 +20,17 @@ def webhook():
     req2.add_header('Authorization', 'Bearer eb027009-93dd-41cf-8f6b-006956b4790d')
     herokuConfig = urllib2.urlopen(req2).read()
     
-    api_key = None
-    if 'api-key' in request.headers
-        api_key = request.headers['api-key']
-    if api_key != herokuConfig['API_KEY']:
-        res = {
-                    "speech": speech,
-                    "displayText": 'Invalid API key',
-                    #"data": {},
-                    # "contextOut": [],
-                    "source": "apiai-onlinestore-shipping"
-                }
+#    api_key = None
+#    if 'api-key' in request.headers
+#        api_key = request.headers['api-key']
+#    if api_key != herokuConfig['API_KEY']:
+#        res = {
+#                   "speech": speech,
+#                    "displayText": 'Invalid API key',
+#                    #"data": {},
+#                    # "contextOut": [],
+#                    "source": "apiai-onlinestore-shipping"
+#                }
     
     req = request.get_json(silent=True, force=True)
 
