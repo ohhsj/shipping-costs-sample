@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import math
 import urllib
 import json
 import os
@@ -56,10 +56,10 @@ def makeWebhookResult(req):
     
     #Naked cores is 30 million PVs for 2x8 core and 10 adhoc runs i.e each run to complete in 2 hours
     #Looking at around 250 valuations per core per second
-    numofCores = dealPV / 30
+    numofCores = math.ceil(dealPV / 30) * 8
     
     #RAM size
-    RAM = dealPV / 30 * 32
+    RAM = math.ceil(dealPV / 30) * 32
     
     speech = "Estimated PV Calculations (in million): %s, Num of Cores: 2 x %s, RAM: %s, Calculation Type: %s." % (str(dealPV),str(numofCores),str(RAM),calculationtype)
 
