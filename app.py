@@ -96,10 +96,10 @@ def makeWebhookResult(req):
     else:
         batchScale = 0
         
-    numofCores = math.ceil(dealPV / 60) * 8 * batchScale
+    numofCores = math.ceil(dealPV / (60* batchScale)) * 8 
     
     #RAM size
-    RAM = math.ceil(dealPV / 60) * 16 * batchScale
+    RAM = math.ceil(dealPV / (60* batchScale)) * 16 
     
     speech = "Estimated PV Calculations (in million): %s, Num of Cores: 2 x %s, RAM: %s, Calculation Type: %s." % (str(dealPV),str(numofCores),str(RAM),calculationtype)
 
