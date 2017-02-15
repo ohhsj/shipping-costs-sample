@@ -92,6 +92,7 @@ def makeWebhookResult(req):
     respParam = {}
     respParam['corenum'] = str(numofCores)
     respParam['dealPV'] = str(dealPV)
+    respParam['ram'] = str(RAM)
 
     return {
         "speech": speech,
