@@ -90,8 +90,8 @@ def makeWebhookResult(req):
     print("Response:")
     print(speech)
     respParam = {}
-    respParam['corenum'] = numofCores
-    respParam['dealPV'] = dealPV
+    respParam['corenum'] = str(numofCores)
+    respParam['dealPV'] = str(dealPV)
 
     return {
         "speech": speech,
