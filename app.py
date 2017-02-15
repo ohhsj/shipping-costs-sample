@@ -28,25 +28,25 @@ def webhook():
     return r
 
 def makeWebhookResult(req):
-    url = 'https://api.heroku.com/apps/serene-plains-17463/config-vars'
-    req2 = urllib2.Request(url)
-    req2.add_header('Accept': 'application/vnd.heroku+json; version=3')
-    req2.add_header('Authorization': 'Bearer eb027009-93dd-41cf-8f6b-006956b4790d')
-    herokuConfig = urllib2.urlopen(req2).read()
+#    url = 'https://api.heroku.com/apps/serene-plains-17463/config-vars'
+#    req2 = urllib2.Request(url)
+#    req2.add_header('Accept': 'application/vnd.heroku+json; version=3')
+#    req2.add_header('Authorization': 'Bearer eb027009-93dd-41cf-8f6b-006956b4790d')
+#    herokuConfig = urllib2.urlopen(req2).read()
     
-    api_key = None
-    if req.headers.get('api-key'):
-        api_key = req.headers['api-key']
-    elif req.args.get('api-key'):
-        api_key = req.args['api-key']
-    if api_key != herokuConfig['API_KEY']:
-        return {
-                    "speech": speech,
-                    "displayText": 'Invalid API key',
-                    #"data": {},
-                    # "contextOut": [],
-                    "source": "apiai-onlinestore-shipping"
-                }
+#    api_key = None
+#    if req.headers.get('api-key'):
+#        api_key = req.headers['api-key']
+#    elif req.args.get('api-key'):
+#        api_key = req.args['api-key']
+#    if api_key != herokuConfig['API_KEY']:
+#        return {
+#                    "speech": speech,
+#                    "displayText": 'Invalid API key',
+#                    #"data": {},
+#                    # "contextOut": [],
+#                    "source": "apiai-onlinestore-shipping"
+#                }
     
     result = req.get("result")
     parameters = result.get("parameters")
