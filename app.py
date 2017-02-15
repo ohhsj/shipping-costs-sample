@@ -89,13 +89,16 @@ def makeWebhookResult(req):
 
     print("Response:")
     print(speech)
+    respParam = {}
+    respParam['corenum'] = numofCores
+    respParam['dealPV'] = dealPV
 
     return {
         "speech": speech,
         "displayText": speech,
         #"data": {},
-        # "contextOut": [],
-        "source": "apiai-onlinestore-shipping"
+        "contextOut": [{"name":"estimator", "lifespan":5, "parameters": json.dumps(respParam) }] ,
+        "source": "aa-hw-estimator-engine"
     }
 
 
