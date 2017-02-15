@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 import math
-import urllib
+import urllib2
 import json
 import os
-import urllib2
 
 from flask import Flask
 from flask import request
