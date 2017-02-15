@@ -19,10 +19,17 @@ def webhook():
     req2.add_header('Accept', 'application/vnd.heroku+json; version=3')
     req2.add_header('Authorization', 'Bearer eb027009-93dd-41cf-8f6b-006956b4790d')
     herokuConfig = urllib2.urlopen(req2).read()
-
+    
+    print("Config-Var:")
+    print(json.dumps(herokuConfig,indent=4))
+    
     req = request.get_json(silent=True, force=True)
 
     api_key = request.headers["api-key"]
+    
+    print("api-key:")
+    print(api_key)
+    
 #    if api_key != herokuConfig['API_KEY']:
 #        return make_response({"displayText": "Here it is"})
 
