@@ -108,10 +108,10 @@ def makeWebhookResult(req):
     else:
         batchScale = 0
         
-    numofCores = math.ceil(dealPV / (60* batchScale * dealVector * 0.5)) * 16
+    numofCores = math.ceil(dealPV / (60* batchScale * dealVector * 0.8)) * 16
     
     #RAM size
-    rawRAM = math.ceil(dealPV / (30* batchScale * dealVector * 0.5)) 
+    rawRAM = math.ceil(dealPV / (30* batchScale * dealVector * 0.8)) 
     if rawRAM % 2 != 0:
         rawRAM += 1
     RAM = rawRAM * 16
