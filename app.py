@@ -77,14 +77,14 @@ def makeWebhookResult(req):
     }
     #Vectorization per deal with the number of scenarios and horizons
     vectorizationLookup = {
-        'Market Risk Sensitivities': 10,
-        'FRTB-SA': 10, 
-        'HS VaR': 10, 
-        'Monte Carlo VaR': 1000, 
-        'FRTB HS-IMA': 10000, 
-        'PFE': 100000, 
-        'PFE Stress Tests': 100000, 
-        'FRTB-CVA': 100000
+        'Market Risk Sensitivities': 1,
+        'FRTB-SA': 1, 
+        'HS VaR': 1, 
+        'Monte Carlo VaR': 10, 
+        'FRTB HS-IMA': 100, 
+        'PFE': 1000, 
+        'PFE Stress Tests': 1000, 
+        'FRTB-CVA': 1000
     }
     
     dealPV = stddealsize * stdPVLookup[calculationtype]
