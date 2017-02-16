@@ -98,20 +98,20 @@ def makeWebhookResult(req):
     #if the number of runs is 10 or more then we need to complete in 30mins
     
     if batchsize == 1:
-        batchScale = 4
+        batchScale = 1
     elif batchsize > 1:
         batchScale = 2
     elif batchsize >= 5:
-        batchScale = 1
+        batchScale = 4
     elif batchsize >= 10:
-        batchScale = 0.5    
+        batchScale = 8    
     else:
         batchScale = 0
         
-    numofCores = math.ceil(dealPV / (30* batchScale * dealVector * 0.8)) * 16
+    numofCores = math.ceil(dealPV / (30 * dealVector * 0.8)) * 16
     
     #RAM size
-    rawRAM = math.ceil(dealPV / (30* batchScale * dealVector * 0.8)) 
+    rawRAM = math.ceil(dealPV / (30 * dealVector * 0.8)) 
     if rawRAM % 2 != 0:
         rawRAM += 1
     RAM = rawRAM * 16
