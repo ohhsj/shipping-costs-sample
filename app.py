@@ -82,8 +82,8 @@ def makeWebhookResult(req):
         'HS VaR': 1, 
         'Monte Carlo VaR': 10, 
         'FRTB HS-IMA': 10, 
-        'PFE': 1000, 
-        'PFE Stress Tests': 1000, 
+        'PFE': 250, 
+        'PFE Stress Tests': 500, 
         'FRTB-CVA': 1000
     }
     
