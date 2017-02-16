@@ -81,7 +81,7 @@ def makeWebhookResult(req):
         'FRTB-SA': 1, 
         'HS VaR': 1, 
         'Monte Carlo VaR': 10, 
-        'FRTB HS-IMA': 100, 
+        'FRTB HS-IMA': 10, 
         'PFE': 1000, 
         'PFE Stress Tests': 1000, 
         'FRTB-CVA': 1000
@@ -102,9 +102,9 @@ def makeWebhookResult(req):
     elif batchsize > 1:
         batchScale = 2
     elif batchsize >= 5:
-        batchScale = 1.5
+        batchScale = 1
     elif batchsize >= 10:
-        batchScale = 1    
+        batchScale = 0.5    
     else:
         batchScale = 0
         
