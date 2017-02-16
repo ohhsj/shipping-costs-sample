@@ -82,9 +82,9 @@ def makeWebhookResult(req):
         'HS VaR': 1, 
         'Monte Carlo VaR': 10, 
         'FRTB HS-IMA': 10, 
-        'PFE': 25, 
-        'PFE Stress Tests': 50, 
-        'FRTB-CVA': 100
+        'PFE': 205, 
+        'PFE Stress Tests': 500, 
+        'FRTB-CVA': 1000
     }
     
     dealPV = stddealsize * stdPVLookup[calculationtype]
